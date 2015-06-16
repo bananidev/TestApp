@@ -24,7 +24,7 @@ var validate={
     
     EmailValidation:function(usrNameId)
     {
-        valid.username=usrNameId.id.value;
+        valid.username=usrNameId.id.value.replace(/\s/g, "");
         valid.username=valid.username.toLowerCase();
         var atpos = valid.username.indexOf("@");
         var dotpos = valid.username.lastIndexOf(".");

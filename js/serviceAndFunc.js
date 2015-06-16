@@ -497,7 +497,7 @@ function addStep1()
     {
         var loginData={
                         "action": "login",
-                        "userName": valid.username,
+                        "userName": valid.username.replace(/\s/g, ""),
                         "password": valid.passwd,
                         "deviceID": device.Id ,
                         "deviceType": device.Type
@@ -515,7 +515,7 @@ function addStep1()
                             console.log(result_data.responseMessage);
                             user.Id=result_data.userInfo.userID;
                             user.Type=result_data.userInfo.userType;
-                            window.localStorage.setItem("EmailID",valid.username);
+                            window.localStorage.setItem("EmailID",valid.username.replace(/\s/g, ""));
                             window.localStorage.setItem("Password",valid.passwd);
                             window.localStorage.setItem("keepMeSignIn","2");
                             window.localStorage.setItem("userId", result_data.userInfo.userID);

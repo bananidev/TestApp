@@ -494,7 +494,7 @@ function addStep1()
     {
         var loginData={
                         "action": "login",
-                        "userName": valid.username,
+                        "userName": valid.username.split(' ').join(''),
                         "password": valid.passwd,
                         "deviceID": device.Id ,
                         "deviceType": device.Type

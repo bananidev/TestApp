@@ -265,6 +265,39 @@ function placeNotifList(resp_in)
                 
                 else if(resp_in.notificationList[i].type == 'enquiry' || resp_in.notificationList[i].type == 'Enquiry')
                 {
+                    
+                    //shujaat code starts
+                    var msg = '';
+                    var senderName = '';
+                    
+                    if(resp_in.notificationList[i].name == "" || resp_in.notificationList[i].name == " ")
+                        senderName = 'SOMEONE';
+                    
+                    else
+                        senderName = resp_in.notificationList[i].name.toUpperCase();
+                    
+                    
+                    
+                    if(resp_in.notificationList[i].truckID == "0")
+                    {
+                        msg = senderName + ' enquired about';
+                        
+                        $('#notifiaction_list').append('<li><div class="behind buttons-three-notify"><a href="#" class="ui-btn delete-btns"><div class="images-hidden" onclick="delete_notification('+i+')"><img src="themes/images/deleteicon.png"></div></a></div><a class="trackdetail favdetails"><div class="rows" id="'+div_Id+'"><div class="leftpart" ><img src="themes/images/bellicon.png"></div><div class="rightpart" onclick="get_Enq_Details(\''+i+'\',\''+'Enquiry'+'\')"><div class="view-rows title">'+msg+' </div><div class="view-rows discrip">&#34;'+resp_in.notificationList[i].message.substring(0, 40)+'...'+'&#34;</div><div class="view-rows time">'+timeDiffrnc(resp_in.notificationList[i].created_at)+'</div></div></div></a></li>')
+                    }
+                    
+                    else
+                    {
+                        msg = senderName + ' enquired about your listing';
+                        $('#notifiaction_list').append('<li><div class="behind buttons-three-notify"><a href="#" class="ui-btn delete-btns"><div class="images-hidden" onclick="delete_notification('+i+')"><img src="themes/images/deleteicon.png"></div></a></div><a class="trackdetail favdetails"><div class="rows" id="'+div_Id+'"><div class="leftpart" ><img src="themes/images/bellicon.png"></div><div class="rightpart" onclick="get_Enq_Details(\''+i+'\',\''+'Enquiry about truck '+resp_in.notificationList[i].headline+'\')"><div class="view-rows title">'+msg+' </div><div class="view-rows discrip">&#34;'+resp_in.notificationList[i].headline+'&#34;</div><div class="view-rows time">'+timeDiffrnc(resp_in.notificationList[i].created_at)+'</div></div></div></a></li>')
+                    }
+                    
+                    //shujaat code ends
+                    
+                    
+                    
+                    
+                    
+                    /*
                      var hhdng ='';
                     if(resp_in.notificationList[i].name == "" || resp_in.notificationList[i].name == " ")
                     {
@@ -278,7 +311,10 @@ function placeNotifList(resp_in)
                     $('#notifiaction_list').append('<li><div class="behind buttons-three-notify"><a href="#" class="ui-btn delete-btns"><div class="images-hidden" onclick="delete_notification('+i+')"><img src="themes/images/deleteicon.png"></div></a></div><a class="trackdetail favdetails"><div class="rows" id="'+div_Id+'"><div class="leftpart" ><img src="themes/images/bellicon.png"></div><div class="rightpart" onclick="get_Enq_Details(\''+i+'\',\''+resp_in.notificationList[i].headline+'\')"><div class="view-rows title">'+hhdng+' </div><div class="view-rows discrip">&#34;'+resp_in.notificationList[i].headline+'&#34;</div><div class="view-rows time">'+timeDiffrnc(resp_in.notificationList[i].created_at)+'</div></div></div></a></li>')
 
                     //$('#notifiaction_list').append('<div class="rows" id="'+div_Id+'" onclick="clickofnotifLi(\''+div_Id+'\',\''+listNotif_id+'\')"> <div class="leftpart"> <img src="themes/images/bellicon.png"> </div><div class="rightpart"><div class="view-rows title">'+resp_in.notificationList[i].message+'</div><div class="view-rows discrip"><h3>'+resp_in.notificationList[i].headline+'</h3></div> <div class="view-rows time">'+timeDiffrnc(resp_in.notificationList[i].created_at)+'</div></div></div>')
+                     
+                     */
                 }
+                
                 $('#notifiaction_list').trigger('create');
                 $('#notifiaction_list').listview('refresh');
             }
@@ -428,8 +464,9 @@ function get_Enq_Details(index,gheading)
                         $('#enquires_msg').empty();
                         $('#enquires_email').empty();
                         $('#enqr_top').empty();
-                         var headingh3 = "Enquiry for truck "+gheading
-                        $('#enqr_top').append(' <h3> '+headingh3+'</h3>')
+                         //var headingh3 = "Enquiry for truck "+gheading
+                        //$('#enqr_top').append(' <h3> '+headingh3+'</h3>')
+                        $('#enqr_top').append(' <h3> '+gheading+'</h3>')
                         $('#enqr_top').trigger('create');
                         $('#date_time').append(result_data.enquiryDetail.created_at);
                         $('#enquires_name').append(result_data.enquiryDetail.name);

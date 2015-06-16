@@ -2,28 +2,28 @@
                                                      AUTHOR : AMEEDUDDIN*/
 
 
-//function getdevicetoken()
-//{
-//    var pushNotification;
-//    try
-//    {
-//        pushNotification = window.plugins.pushNotification;
-//        if (device.platform == 'android' || device.platform == 'Android' || device.platform == 'amazon-fireos' )
-//        {
-//            pushNotification.register(successHandler, errorHandler, {"senderID":"411039204400","ecb":"onNotification"});		// ITEMCENTRAL required!
-//        }
-//        else
-//        {
-//            pushNotification.register(tokenHandler, errorHandler, {"badge":"true","sound":"true","alert":"true","ecb":"onNotificationAPN"});	// required!
-//        }
-//    }
-//    catch(err)
-//    {
-//        var txt="There was an error on this page.\n\n";
-//        txt+="Error description: " + err.message + "\n\n";
-//        alert(txt);
-//    }
-//}
+function getdevicetoken()
+{
+    var pushNotification;
+    try
+    {
+        pushNotification = window.plugins.pushNotification;
+        if (device.platform == 'android' || device.platform == 'Android' || device.platform == 'amazon-fireos' )
+        {
+            pushNotification.register(successHandler, errorHandler, {"senderID":"411039204400","ecb":"onNotification"});		// ITEMCENTRAL required!
+        }
+        else
+        {
+            pushNotification.register(tokenHandler, errorHandler, {"badge":"true","sound":"true","alert":"true","ecb":"onNotificationAPN"});	// required!
+        }
+    }
+    catch(err)
+    {
+        var txt="There was an error on this page.\n\n";
+        txt+="Error description: " + err.message + "\n\n";
+        alert(txt);
+    }
+}
 
 
 

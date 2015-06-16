@@ -475,7 +475,6 @@ function notifySuccess()
 
 function panel_Open(panelId)
 {
-    console.log(panelId)
     if(loginstatus==0){
         
         $('#'+panelId+'Login').panel("toggle");
